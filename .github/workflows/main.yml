@@ -1,11 +1,12 @@
-from setuptools import setup, find_packages
-
-
-setup(
-    name='Module_folder',
-    version='1.0.0',
-    install_requires=[
-        'pytest'
-    ],
-    packages=find_packages()
-)
+on: push
+name: on push
+jobs:
+  gitHubActionForPytest:
+    name: GitHub Action for pytest
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@main
+    - name: GitHub Action for pytest
+      uses: cclauss/GitHub-Action-for-pytest@master
+      with:
+        args: python setup.py develop && pytest
